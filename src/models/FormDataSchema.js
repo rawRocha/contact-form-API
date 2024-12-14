@@ -7,6 +7,10 @@ const FormDataSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Nome é obrigatório'], // Garantir que nome não seja vazio
     },
+    sobrenome: {
+      type: String,
+      required: [false, 'Sobrenome é obrigatório'], // Garantir que nome não seja vazio
+    },
     email: {
       type: String,
       required: [true, 'Email é obrigatório'], // Garantir que email não seja vazio

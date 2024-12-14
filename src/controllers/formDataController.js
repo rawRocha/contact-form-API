@@ -2,16 +2,18 @@ const FormData = require('../models/FormDataSchema');
 
 // Controller para submeter o formulário
 exports.submitForm = async (req, res) => {
-  const { nome, email, mensagem } = req.body;
+  const { nome, sobrenome, email, mensagem } = req.body;
 
   // Validação simples dos dados
-  if (!nome || !email || !mensagem) {
-    return res.status(400).send({ message: 'Todos os campos são obrigatórios!' });
+  if (!nome || !sobrenome || !email || !mensagem) {
+    return res
+      .status(400)
+      .send({ message: 'Todos os campos são obrigatórios!' });
   }
 
   try {
     // Criação do novo objeto FormData
-    const newFormData = new FormData({ nome, email, mensagem });
+    const newFormData = new FormData({ nome, sobrenome, email, mensagem });
 
     // Salvar os dados no MongoDB
     await newFormData.save();

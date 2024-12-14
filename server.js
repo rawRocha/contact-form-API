@@ -4,11 +4,22 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const routes = require('./src/routes/route');
 
 //configurar o app
 const app = express();
+
+app.use(
+  cors({
+    origin: 'http://127.0.0.1:5500', // Substitua pela URL do frontend
+    methods: ['GET', 'POST'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // Se for usar cookies ou autenticação
+  }),
+);
+
 app.use(bodyParser.json());
 app.use(routes);
 
